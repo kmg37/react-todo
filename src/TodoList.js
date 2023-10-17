@@ -11,7 +11,7 @@ function TodoList() {
   return (
     <ul>
       {todoList.map((props) => (
-        <TodoListItem id={props.id} title={props.title} />
+        <TodoListItem key={props.id} title={props.title} />
       ))}
     </ul>
   );
