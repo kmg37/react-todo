@@ -6,7 +6,7 @@ function App() {
   const [todoList, setTodoList] = React.useState([]);
 
   function addTodo(newTodo) {
-    setTodoList((obj) => [...obj, newTodo]);
+    setTodoList((prevTodoList) => [...prevTodoList, newTodo]);
   }
 
   return (
