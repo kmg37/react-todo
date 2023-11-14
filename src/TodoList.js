@@ -7,11 +7,15 @@ import TodoListItem from "./TodoListItem";
   { title: "The last title", id: 3 },
 ]; */
 
-function TodoList({ todoList }) {
+function TodoList({ todoList, onRemoveTodo }) {
   return (
     <ul>
       {todoList.map((item) => (
-        <TodoListItem key={item.id} todoItem={item} />
+        <TodoListItem
+          key={item.id}
+          todoItem={item}
+          onRemoveTodo={onRemoveTodo}
+        />
       ))}
     </ul>
   );
