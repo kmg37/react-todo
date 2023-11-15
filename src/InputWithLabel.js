@@ -4,7 +4,7 @@ const InputWithLabel = ({ todoValue, onInputChange, children }) => {
   const inputRef = useRef();
   useEffect(() => {
     inputRef.current.focus();
-  }, [todoValue]);
+  });
 
   return (
     <>
@@ -15,7 +15,7 @@ const InputWithLabel = ({ todoValue, onInputChange, children }) => {
         value={todoValue}
         onChange={onInputChange}
         ref={inputRef}
-      ></input>
+      />
     </>
   );
 };
