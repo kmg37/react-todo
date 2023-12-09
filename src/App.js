@@ -29,17 +29,14 @@ function App() {
           }),
         2000
       )
-    )
-      .then((result) => {
-        setTodoList(result.data.todoList);
-      })
-      .then(() => {
-        setIsLoading(false);
-      });
+    ).then((result) => {
+      setTodoList(result.data.todoList);
+      setIsLoading(false);
+    });
   }, []);
 
   React.useEffect(() => {
-    if (isLoading === false) {
+    if (!isLoading) {
       localStorage.setItem("savedTodoList", JSON.stringify(todoList));
     }
   }, [todoList]);
