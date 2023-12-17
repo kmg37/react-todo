@@ -17,9 +17,9 @@ import AddTodoForm from "./AddTodoForm";
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+  const AIRTABLE_API_URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
 
-  const fetchData = async () => {
+  const fetchData = React.useCallback(async () => {
     const options = {
       method: "GET",
       headers: {
@@ -27,7 +27,7 @@ function App() {
       },
     };
     try {
-      const response = await fetch(url, options);
+      const response = await fetch(AIRTABLE_API_URL, options);
 
       if (!response.ok) {
         const message = `Error: ${response.status}`;
@@ -48,7 +48,7 @@ function App() {
     } catch (error) {
       console.log(error.message);
     }
-  };
+  }, []);
 
   React.useEffect(() => {
     fetchData();
@@ -67,7 +67,7 @@ function App() {
       setIsLoading(false);
     });
   */
-  }, []);
+  }, [fetchData]);
 
   React.useEffect(() => {
     if (!isLoading) {
