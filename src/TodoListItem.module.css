@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  justify-content: center;
+  background-image: url("assets/blackfabric.avif");
+  background-size: cover;
+}
+
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+  margin: 50px 0 50px 0;
+}
+
+label {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 0 10px 0 10px;
+}
+
+button {
+  border-radius: 3px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(169, 169, 169);
+}
+
+.removeButton {
+  width: 65px;
+  margin-top: 5px;
+}
+
+.listContainer {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: rgb(98, 98, 98, 0.25);
+  border-radius: 15px;
+  color: aliceblue;
+  max-width: 261.513px;
+}
+
+.ulList {
+  display: inline-block;
+  word-break: break-all;
+}
+
+.ListItem {
+  display: grid;
+  line-height: 1.5rem;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  overflow-wrap: break-word;
+}
+
+/* media queries */
+
+@media (max-width: 425px) {
+  .listContainer {
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .listContainer {
+    margin-top: 200px;
+  }
+}
