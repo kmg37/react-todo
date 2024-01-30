@@ -1,6 +1,7 @@
 import React from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+import styles from "./TodoListItem.module.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /*const useSemiPersistentState = () => {
@@ -91,7 +92,7 @@ function App() {
         <Route
           path="/"
           element={
-            <>
+            <div className={styles.listContainer}>
               <h1>Todo List</h1>
               <AddTodoForm onAddTodo={addTodo} />
               {isLoading ? (
@@ -99,7 +100,7 @@ function App() {
               ) : (
                 <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
               )}
-            </>
+            </div>
           }
         />
         <Route path="/new" element={<h1>New Todo List</h1>} />
