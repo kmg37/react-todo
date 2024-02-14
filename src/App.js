@@ -1,7 +1,7 @@
 import React from "react";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
-import styles from "./TodoListItem.module.css";
+import TodoList from "./components/TodoList";
+import AddTodoForm from "./components/AddTodoForm";
+import styles from "./components/TodoListItem.module.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 /*const useSemiPersistentState = () => {
@@ -19,6 +19,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+  const [sort, setSort] = React.useState("desc");
   const AIRTABLE_API_URL = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
 
   const fetchData = React.useCallback(async () => {
@@ -29,7 +30,10 @@ function App() {
       },
     };
     try {
-      const response = await fetch(AIRTABLE_API_URL, options);
+      const response = await fetch(
+        `${AIRTABLE_API_URL}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=${sort}`,
+        options
+      );
 
       if (!response.ok) {
         const message = `Error: ${response.status}`;
@@ -50,7 +54,7 @@ function App() {
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [sort, AIRTABLE_API_URL]);
 
   React.useEffect(() => {
     fetchData();
@@ -69,7 +73,7 @@ function App() {
       setIsLoading(false);
     });
   */
-  }, [fetchData]);
+  }, [fetchData, sort]);
 
   React.useEffect(() => {
     if (!isLoading) {
